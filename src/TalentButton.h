@@ -98,7 +98,7 @@ public:
     TalentButtonServerScript() : ServerScript("TalentButtonServerScript", { SERVERHOOK_CAN_PACKET_SEND }) {}
 
 private:
-    bool CanPacketSend(WorldSession* session, WorldPacket& packet) override;
+    bool CanPacketSend(WorldSession* session, WorldPacket const& packet) override;
     std::vector<std::string> GetChunks(std::string s, uint8_t chunkSize);
     void SendChunkedPayload(Warden* warden, WardenPayloadMgr* payloadMgr, std::string payload, uint32 chunkSize);
 };
