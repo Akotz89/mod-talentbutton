@@ -44,7 +44,7 @@ void TalentButtonServerScript::SendChunkedPayload(Warden* warden, WardenPayloadM
     warden->ForceChecks();
 }
 
-bool TalentButtonServerScript::CanPacketSend(WorldSession* session, WorldPacket& packet)
+bool TalentButtonServerScript::CanPacketSend(WorldSession* session, WorldPacket const& packet)
 {
     if (!TalentButton_Enabled)
         return true;
