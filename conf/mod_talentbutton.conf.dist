@@ -1,13 +1,13 @@
 [worldserver]
 
 ########################################
-# BrianExperimental configuration
+# TalentButton configuration
 ########################################
 #
-#    BrianExperimental.Enable
+#    TalentButton.Enable
 #        Description: Enable or disable the module.
 #        Default:     0 - Disabled
 #                     1 - Enabled
 #
 
-BrianExperimental.Enable = 1
+TalentButton.Enable = 1
