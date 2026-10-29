@@ -109,13 +109,16 @@ Acore::ChatCommands::ChatCommandTable TalentButtonCommandScript::GetCommands() c
 {
     static Acore::ChatCommands::ChatCommandTable commandTable =
     {
-        { "modtalentreset", HandleModTalentResetCommand, SEC_PLAYER, Acore::ChatCommands::Console::Yes }
+        { "modtalentreset", HandleModTalentResetCommand, SEC_PLAYER, Acore::ChatCommands::Console::No }
     };
     return commandTable;
 }
 
 bool TalentButtonCommandScript::HandleModTalentResetCommand(ChatHandler* handler, Optional<Acore::ChatCommands::PlayerIdentifier> target)
 {
+    if (!handler->GetSession() || !handler->GetSession()->GetPlayer())
+        return false;
+
     Player* targetPlayer = nullptr;
 
     if (target)
@@ -144,7 +147,7 @@ bool TalentButtonCommandScript::HandleModTalentResetCommand(ChatHandler* handler
 
 bool TalentButtonCommandScript::CanUseCommand(Player* player, ChatHandler* handler)
 {
-    if (!sConfigMgr->GetOption<bool>("TalentButton.Enable", false) || player->GetLevel() < 10)
+    if (!player || !sConfigMgr->GetOption<bool>("TalentButton.Enable", false) || player->GetLevel() < 10)
     {
         // No further checks are necessary because chat messages can only be sent while the player is alive.
         return false;
